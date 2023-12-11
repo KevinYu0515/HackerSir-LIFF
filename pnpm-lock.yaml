@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@line/liff':
-    specifier: ^2.22.0
-    version: 2.22.0
+    specifier: ^2.22.3
+    version: 2.22.3
   '@netlify/plugin-nextjs':
     specifier: ^4.41.3
     version: 4.41.3
