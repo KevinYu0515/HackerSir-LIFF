@@ -57,7 +57,7 @@ const LinePayMessage: NextPage = () => {
                   text: "LINE Pay",
                   weight: "bold",
                   size: "xl",
-                  contents: [] as never,
+                  contents: [] as any,
                 },
                 {
                   type: "text",

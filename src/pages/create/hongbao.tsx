@@ -56,7 +56,7 @@ const LinePayMessage: NextPage = () => {
                   text: "LINE Pay 紅包",
                   weight: "bold",
                   size: "xl",
-                  contents: [] as never,
+                  contents: [] as any,
                 },
                 {
                   type: "text",
