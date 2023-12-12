@@ -6,10 +6,10 @@ const Home: NextPage = () => {
   const router = useRouter();
   const ref = useRef<HTMLInputElement>(null);
 
-  const handleCopyLink = (type: string) => {
+  const handleCopyLink = () => {
     const text = ref.current?.value;
-
-
+    console.log(ref.current?.value)
+    return text
   };
 
   return (
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             ref={ref}
           />
           <div className="btn-group w-full">
-            <a href={`/build?text=${ref.current?.value || ""}`} className="btn w-1/3">文字訊息</a>
+            <a href={`/build?text=${handleCopyLink() || ""}`} className="btn w-1/3">文字訊息</a>
             <a href={`/create/hongbao`} className="btn-error btn w-1/3">紅包</a>
             <a href={`/create/linepay`} className="btn-success btn w-1/3">LinePay</a>
           </div>
