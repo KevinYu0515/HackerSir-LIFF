@@ -4,8 +4,22 @@ import { useRouter } from "next/router";
 
 type PermissionState = {
     canWriteMessage: boolean;
+    type: string;
     message: string;
     background: string;
+};
+
+interface LinkType{
+  "messages": string;
+  "hongbao": string;
+  "linepay": string;
+}
+
+// 創建一個符合介面的物件
+const type_collection: LinkType = {
+  "messages": '文字訊息',
+  "hongbao": 'Line Pay 紅包',
+  "linepay": 'Line Pay',
 };
 
 const LineMSBuild: NextPage = () => {
@@ -13,18 +27,38 @@ const LineMSBuild: NextPage = () => {
 
     const [state, setState] = useState<PermissionState>({
         canWriteMessage: false,
+        type: "Nothing",
         message: "Loading...",
         background: "from-[#fbc2eb] to-[#a6c1ee]",
     });
 
     useEffect(() => {
         const text = encodeURIComponent(router.query.text as string)
-        setState({
-          canWriteMessage: true,
-          message: `這是你的連結：\n https://liff.line.me/2000964921-pXkanzYw/messages?text=${text}`,
-          background: "from-[#f78ca0] to-[#fe9a8b]",
-        });
-      }, [router.query.text]);
+        if(router.query.type == 'messages'){
+          setState({
+            canWriteMessage: true,
+            type: type_collection[router.query.type],
+            message: `https://liff.line.me/2000964921-pXkanzYw/messages?text=${text}`,
+            background: "from-[#f78ca0] to-[#fe9a8b]",
+          });
+        }
+        if(router.query.type == 'hongbao'){
+          setState({
+            canWriteMessage: true,
+            type: type_collection[router.query.type],
+            message: `https://liff.line.me/2000964921-pXkanzYw/create/hongbao?text=${text}`,
+            background: "from-[#f78ca0] to-[#fe9a8b]",
+          });
+        }
+        if(router.query.type == 'linepay'){
+          setState({
+            canWriteMessage: true,
+            type: type_collection[router.query.type],
+            message: `https://liff.line.me/2000964921-pXkanzYw/create/linepay?text=${text}`,
+            background: "from-[#f78ca0] to-[#fe9a8b]",
+          });
+        }
+      }, [router.query.type, router.query.text]);
     return (
         <main
             className={
@@ -32,7 +66,8 @@ const LineMSBuild: NextPage = () => {
             }
         >
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-                <h5 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+                <h5 className="text-3xl font-extrabold tracking-tight text-white sm:text-[2rem]">
+                  <p>這是你的{state.type}連結🎉</p>
                   <a href={`${state.message}`}>{state.message}</a>
                 </h5>
             </div>
