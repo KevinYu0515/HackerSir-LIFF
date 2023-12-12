@@ -18,10 +18,10 @@ const LineMSBuild: NextPage = () => {
     });
 
     useEffect(() => {
-        console.log(router.query.text)
+        const text = encodeURIComponent(router.query.value as string)
         setState({
           canWriteMessage: true,
-          message: `這是你的連結：\n https://liff.line.me/2000964921-pXkanzYw/messages?text=${router.query.text as string}`,
+          message: `這是你的連結：\n https://liff.line.me/2000964921-pXkanzYw/messages?text=${text}`,
           background: "from-[#f78ca0] to-[#fe9a8b]",
         });
       }, [router.query.text]);
