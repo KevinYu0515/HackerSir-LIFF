@@ -66,8 +66,8 @@ const LineMSBuild: NextPage = () => {
             }
         >
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-                <h5 className="text-3xl font-extrabold tracking-tight text-white sm:text-[2rem]">
-                  <p>這是你的{state.type}連結🎉</p>
+                <h5 className="font-extrabold tracking-tight text-white">
+                  <p className="">這是你的{state.type}連結🎉</p>
                   <a href={`${state.message}`}>{state.message}</a>
                 </h5>
             </div>

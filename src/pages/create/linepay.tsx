@@ -25,7 +25,8 @@ const LinePayMessage: NextPage = () => {
     const sendMessage = async () => {
       const liffId = env.NEXT_PUBLIC_LIFF_ID;
       const profile = await liff.getProfile();
-      const text = (router.query.text as string) || `用紅包砸我, 拜託`;
+      const urlParams = new URLSearchParams(window.location.search);
+      const text = urlParams.get('text') || `用紅包砸我, 拜託`;
       const price = (router.query.price as string) || 1000;
 
       await liff.sendMessages([
