@@ -14,7 +14,6 @@
     "@netlify/plugin-nextjs": "^4.41.3",
     "@t3-oss/env-nextjs": "^0.2.1",
     "daisyui": "^2.51.6",
-    "messaging-api-line": "^1.1.0",
     "next": "^13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
