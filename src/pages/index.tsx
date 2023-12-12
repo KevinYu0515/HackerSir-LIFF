@@ -9,9 +9,7 @@ const Home: NextPage = () => {
     event.preventDefault();
     const text: string = ref.current?.value || "";
     const button: HTMLButtonElement = event.currentTarget;
-    if(button.name == 'message') window.location.href = 'build?text=' + text;
-    if(button.name == 'hongbao') window.location.href = 'build?text=' + text;
-    if(button.name == 'linepay') window.location.href = 'build?text=' + text;
+    window.location.href = 'build?text=' + text + '&type=' + button.name;
     return
   };
 
@@ -30,9 +28,9 @@ const Home: NextPage = () => {
             ref={ref}
           />
           <div className="btn-group w-full">
-            <button name='message' onClick={handleCopyLink} className="btn w-1/3">文字訊息</button>
-            <a href={`/create/hongbao`} className="btn-error btn w-1/3">紅包</a>
-            <a href={`/create/linepay`} className="btn-success btn w-1/3">LinePay</a>
+            <button name='messages' onClick={handleCopyLink} className="btn w-1/3">文字訊息</button>
+            <button name='hongbao' onClick={handleCopyLink} className="btn-error btn w-1/3">紅包</button>
+            <button name='linepay' onClick={handleCopyLink} className="btn-success btn w-1/3">LinePay</button>
           </div>
         </div>
       </div>
