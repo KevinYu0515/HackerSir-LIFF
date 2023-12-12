@@ -8,6 +8,11 @@
     "lint": "next lint",
     "start": "next start"
   },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
+  },
   "dependencies": {
     "@line/bot-sdk": "^8.0.2",
     "@line/liff": "^2.23.0",

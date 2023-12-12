@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useLiff } from "~/LiffContext";
 import * as line from '@line/bot-sdk';
 const { MessagingApiClient, } = line.messagingApi;
 
@@ -15,7 +14,6 @@ const channelAccessToken = 'JRW5NABtAZzyxrg9nWzAI9LFI+9hnskwaiwE6bKAsKkO07KHlHBX
 const userId = "Uacd83125262a3b77850e06ec151c5ec3";
 
 const LineMSBuild: NextPage = () => {
-    const { liff } = useLiff();
     const router = useRouter();
 
     const [state, setState] = useState<PermissionState>({
@@ -59,7 +57,7 @@ const LineMSBuild: NextPage = () => {
           const text = urlParams.get('text')
           handleSendMessage(text as string).catch(console.log);
         }
-      }, [liff, router.query.text]);
+      }, [router.query.text]);
     return (
         <main
             className={
