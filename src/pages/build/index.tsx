@@ -18,7 +18,7 @@ const LineMSBuild: NextPage = () => {
     });
 
     useEffect(() => {
-        const text = encodeURIComponent(router.query.value as string)
+        const text = encodeURIComponent(router.query.text as string)
         setState({
           canWriteMessage: true,
           message: `這是你的連結：\n https://liff.line.me/2000964921-pXkanzYw/messages?text=${text}`,
@@ -32,9 +32,9 @@ const LineMSBuild: NextPage = () => {
             }
         >
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-                <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-                {state.message}
-                </h1>
+                <h5 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+                  <a href={`${state.message}`}>{state.message}</a>
+                </h5>
             </div>
         </main>
     );
