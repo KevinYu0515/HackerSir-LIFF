@@ -33,7 +33,8 @@ const LineMSBuild: NextPage = () => {
     });
 
     useEffect(() => {
-        const text = encodeURIComponent(router.query.text as string)
+        const queryText: string = router.query.text as string || ""
+        const text = encodeURIComponent(queryText.replace(/\s/g, ""))
         if(router.query.type == 'messages'){
           setState({
             canWriteMessage: true,
@@ -67,8 +68,9 @@ const LineMSBuild: NextPage = () => {
         >
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
                 <h5 className="font-extrabold tracking-tight text-white">
-                  <p className="text-2xl">這是你的{state.type}連結🎉</p>
-                  <a className="text-2xl" href={`${state.message}`}>{state.message}</a>
+                  <a className="text-2xl" href={`${state.message}`}>
+                    <p className="text-2xl">這是你的{state.type}連結🎉</p>
+                  </a>
                 </h5>
             </div>
         </main>
