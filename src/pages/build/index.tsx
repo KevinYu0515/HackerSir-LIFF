@@ -18,6 +18,7 @@ const LineMSBuild: NextPage = () => {
     });
 
     useEffect(() => {
+        console.log(router.query.text)
         setState({
           canWriteMessage: true,
           message: `這是你的連結：\n https://liff.line.me/2000964921-pXkanzYw/messages?text=${router.query.text as string}`,
