@@ -25,9 +25,6 @@ const LinePayMessage: NextPage = () => {
     const sendMessage = async () => {
       const liffId = env.NEXT_PUBLIC_LIFF_ID;
       const profile = await liff.getProfile();
-      const urlParams = new URLSearchParams(window.location.search);
-      const text = urlParams.get('text') || `用紅包砸我, 拜託`;
-      console.log(text)
       await liff.sendMessages([
         {
           type: "flex",
@@ -43,7 +40,7 @@ const LinePayMessage: NextPage = () => {
               action: {
                 type: "uri",
                 label: "action",
-                uri: `https://liff.line.me/${liffId}/messages?text=${text}`,
+                uri: `https://liff.line.me/${liffId}/messages?text=${new URLSearchParams(window.location.search).get('text') || '用紅包砸我, 拜託'}`,
               },
               aspectRatio: "20:13",
             },
@@ -81,7 +78,7 @@ const LinePayMessage: NextPage = () => {
                   action: {
                     type: "uri",
                     label: "查看紅包狀態",
-                    uri: `https://liff.line.me/${liffId}/messages?text=${text}`,
+                    uri: `https://liff.line.me/${liffId}/messages?text=${new URLSearchParams(window.location.search).get('text') || '用紅包砸我, 拜託'}`,
                   },
                   margin: "md",
                 },
@@ -134,7 +131,7 @@ const LinePayMessage: NextPage = () => {
                   action: {
                     type: "uri",
                     label: "action",
-                    uri: `https://liff.line.me/${liffId}/messages?text=${text}`,
+                    uri: `https://liff.line.me/${liffId}/messages?text=${new URLSearchParams(window.location.search).get('text') || '用紅包砸我, 拜託'}`,
                   },
                   spacing: "sm",
                 },
