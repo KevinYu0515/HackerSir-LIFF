@@ -58,7 +58,9 @@ const LinePayMessage: NextPage = () => {
     });
 
     if (router.query.text) {
-      sendMessage(router.query.text as string).catch(console.log);
+      const urlParams = new URLSearchParams(window.location.search);
+      const text = urlParams.get('text')
+      sendMessage(text as string).catch(console.log);
     }
   }, [liff, router.query.text]);
 
