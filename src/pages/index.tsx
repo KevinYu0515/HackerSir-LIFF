@@ -9,7 +9,7 @@ const Home: NextPage = () => {
     event.preventDefault();
     const text: string = ref.current?.value || "";
     const button: HTMLButtonElement = event.currentTarget;
-    if(button.name == 'message') window.location.href = 'messages?text=' + text;
+    if(button.name == 'message') window.location.href = 'build?text=' + text;
     return
   };
 
