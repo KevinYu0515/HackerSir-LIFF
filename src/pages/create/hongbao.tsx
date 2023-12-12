@@ -27,7 +27,7 @@ const LinePayMessage: NextPage = () => {
       const profile = await liff.getProfile();
       const urlParams = new URLSearchParams(window.location.search);
       const text = urlParams.get('text') || `用紅包砸我, 拜託`;
-
+      console.log(text)
       await liff.sendMessages([
         {
           type: "flex",
