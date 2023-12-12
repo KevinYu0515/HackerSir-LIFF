@@ -1,15 +1,16 @@
 import { type NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const Home: NextPage = () => {
-  const router = useRouter();
+
   const ref = useRef<HTMLInputElement>(null);
 
-  const handleCopyLink = () => {
-    const text = ref.current?.value;
-    console.log(ref.current?.value)
-    return text
+  const handleCopyLink = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const text: string = ref.current?.value || "";
+    const button: HTMLButtonElement = event.currentTarget;
+    if(button.name == 'message') window.location.href = 'messages?text=' + text;
+    return
   };
 
   return (
@@ -27,7 +28,7 @@ const Home: NextPage = () => {
             ref={ref}
           />
           <div className="btn-group w-full">
-            <a href={`/build?text=${handleCopyLink() || ""}`} className="btn w-1/3">文字訊息</a>
+            <button name='message' onClick={handleCopyLink} className="btn w-1/3">文字訊息</button>
             <a href={`/create/hongbao`} className="btn-error btn w-1/3">紅包</a>
             <a href={`/create/linepay`} className="btn-success btn w-1/3">LinePay</a>
           </div>
