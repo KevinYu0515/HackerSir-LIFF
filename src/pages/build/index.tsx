@@ -24,7 +24,7 @@ const LineMSBuild: NextPage = () => {
 
     useEffect(() => {
         const handleSendMessage = async (message: string) => {
-
+            console.log(message)
             const client = new MessagingApiClient({
                 channelAccessToken
             });
