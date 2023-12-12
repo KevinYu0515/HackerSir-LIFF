@@ -7,9 +7,11 @@ const Home: NextPage = () => {
 
   const handleCopyLink = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const text: string = ref.current?.value || "";
+    const text: string = encodeURIComponent(ref.current?.value as string) || "";
     const button: HTMLButtonElement = event.currentTarget;
     if(button.name == 'message') window.location.href = 'build?text=' + text;
+    if(button.name == 'hongbao') window.location.href = 'build?text=' + text;
+    if(button.name == 'linepay') window.location.href = 'build?text=' + text;
     return
   };
 
